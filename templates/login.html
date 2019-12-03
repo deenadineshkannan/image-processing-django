@@ -1,0 +1,67 @@
+{% load static %}
+{%  static "images" as imgURL %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/login.css' %}">
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src='main.js'></script>
+</head>
+<body>
+        <header class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
+                <div class="site-logo">
+                    <a href="/">Mapol</a>
+                </div>
+                <div class="d-inline-block d-xl-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+                    <div class="main-menu">
+                        <ul class="js-clone-nav">
+                          <li ><a href="/">Home</a></li>
+                          <!-- <li><a href="photos.html">Photos</a></li>
+                          <li><a href="bio.html">Bio</a></li>
+                          <li><a href="blog.html">Blog</a></li>
+                          <li><a href="contact.html">Contact</a></li> -->
+                          {% if user.is_authenticated %}
+                          <li>Hi,{{user.first_name}}</li>
+                          <li><a href="logout">Logout</a></li>
+                          {% else %}
+                          <li><a href="signup">Signup</a></li>
+                          <li class="active"><a href="login">Login</a></li>
+                          {% endif %}
+                        </ul>
+                        <ul class="social js-clone-nav">
+                          <li><a href="#"><span class="icon-facebook"></span></a></li>
+                          <li><a href="#"><span class="icon-twitter"></span></a></li>
+                          <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                      </div>
+                    </header> 
+        <!-- main -->
+        <main class="main-content">
+        <div class="container-fluid photos">
+    <div class="login-page">
+        <div class="form agileits-top">
+            <form class="login-form" action="login" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+                <input type="Submit">
+                <p class="message">Not registered? <a href="signup">Create an account</a></p>
+            </form>
+            <div>
+                    {% for message in messages %}
+                    <h4> {{message}}</h4>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+</body>
+</html>

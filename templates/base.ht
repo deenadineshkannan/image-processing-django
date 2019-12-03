@@ -1,0 +1,113 @@
+{% load static %}
+{%  static "images" as imgURL %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computer vision</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block style %}
+    {% endblock %}
+    <style>
+            .menu {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: darkturquoise;
+               }
+.menu li {
+    float: left;
+   }
+   
+   .menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+   }
+   
+   .menu li ul{
+    display: none;
+   }
+   
+   .menu li a:hover {
+    background-color: #2b90f5;
+   }
+   
+   .active{
+    background: #2b90f5;
+   }
+    </style>
+</head>
+<body>
+        {% block content %}
+        {% endblock %}
+    <header class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
+            <div class="site-logo">
+              <a href="/">Mapol</a>
+            </div>
+            <div class="d-inline-block d-xl-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+            <div class="main-menu">
+              <ul class="js-clone-nav ">
+                <li ><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                <li>Hi,{{user.first_name}}</li>
+                <li><a href="logout">Logout</a></li>
+                {% else %}
+                <li><a href="signup">Signup</a></li>
+                <li><a href="login">Login</a></li>
+                {% endif %}
+              </ul>
+              <ul class="social js-clone-nav">
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </header> 
+          <script>
+                $(document).ready(function() {
+                    // Get current page URL
+                    var url = window.location.href;
+                    // remove # from URL
+                    url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+                    // remove parameters from URL
+                    url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+                    // select file name
+                    url = url.substr(url.lastIndexOf("/") + 1);
+                    // If file name not avilable
+                    if(url == ''){
+                    url = 'base';
+                    }
+                    // Loop all menu items
+                    $('.menu li').each(function(){
+                     // select href
+                     var href = $(this).find('a').attr('href');
+                     // Check filename
+                     if(url == href){
+                      // Add active class
+                      $(this).addClass('active');
+                     }
+                    });
+                   });
+
+          </script>
+</body>
+
+</html>

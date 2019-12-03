@@ -1,0 +1,99 @@
+{% load static %}
+{%  static "images" as imgURL %}
+<!--
+Author: Dineshkannan
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="{% static 'css/signup.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //web font -->
+</head>
+<body>
+
+        <header class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
+            <div class="site-logo">
+                <a href="/">Mapol</a>
+            </div>
+            <div class="d-inline-block d-xl-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+                <div class="main-menu">
+                    <ul class="js-clone-nav">
+                      <li><a href="/">Home</a></li>
+                      <!-- <li><a href="photos.html">Photos</a></li>
+                      <li><a href="bio.html">Bio</a></li>
+                      <li><a href="blog.html">Blog</a></li>
+                      <li><a href="contact.html">Contact</a></li> -->
+                      {% if user.is_authenticated %}
+                      <li>Hi,{{user.first_name}}</li>
+                      <li><a href="logout">Logout</a></li>
+                      {% else %}
+                      <li class="active"><a href="signup">Signup</a></li>
+                      <li><a href="login">Login</a></li>
+                      {% endif %}
+                    </ul>
+                    <ul class="social js-clone-nav">
+                      <li><a href="#"><span class="icon-facebook"></span></a></li>
+                      <li><a href="#"><span class="icon-twitter"></span></a></li>
+                      <li><a href="#"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                  </div>
+                </header> 
+    <!-- main -->
+    <main class="main-content">
+    <div class="container-fluid photos">
+	<div class="main-w3layouts wrapper">
+		<h1>SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                <form action = "signup" method= "post">
+                    {% csrf_token %}
+                    <input type ="text" name="username" placeholder = "User Name" required=""><br>
+                    <input type ="email" name="email" placeholder = "Email" required=""><br>
+                    <input type ="password" name="password1" placeholder = "Password" required=""><br>
+                    <input class="text " type ="password" name="password2" placeholder = "Confirm Password" required=""><br>
+                    <div class="wthree-text">
+                            <label class="anim">
+                                <input type="checkbox" class="checkbox" required="">
+                                <span>I Agree To The Terms & Conditions</span>
+                            </label>
+                            <div class="clear"> </div>
+                        </div>
+                    <input type ="submit" value="SIGNUP">
+                </form>
+                <p>Don't have an Account? <a href="login"> Login Now!</a></p>
+                <div>
+                    {% for message in messages %}
+                    <h4> {{message}}</h4>
+                    {% endfor %}
+                </div>
+			</div>
+		</div>
+
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+    </div>
+    </div>
+</main>
+	<!-- //main -->
+</body>
+</html>
