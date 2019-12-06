@@ -82,8 +82,9 @@
          <form action = "/imageupload" method = "POST" enctype="multipart/form-data" >
           {% csrf_token %}
             <h2>Choose images for teaching<br>
+              <!-- multiple=""  -->
             <input type = "file" name = "file" accept=".jpg" multiple="" class="button"/></h2>
-            <br><h2>Enter name for your dataset:<br>
+            <br><h2>Enter a unique name for your dataset:<br>
               
             <input type = "text" name = "label" class="textbox"/></h2><br>
             <input type = "submit" value = "Upload Images" class="button"/>

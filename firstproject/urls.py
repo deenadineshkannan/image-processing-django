@@ -31,4 +31,5 @@ urlpatterns = [
     path('login',usrmgnt_views.login,name="login"),
     path('logout',usrmgnt_views.logout,name="logout"),
     path('imageupload',yolo_views.imageupload,name="imageupload"),
+    path('trialdetect/<p>',yolo_views.trialdetect,name="trialdetect"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

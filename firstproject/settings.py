@@ -85,6 +85,16 @@ DATABASES = {
         'HOST':'localhost'
     }
 }
+    # },
+
+    # 'mongodb': {
+    #     'ENGINE': 'djongo',
+    #     'NAME':'imgvis',
+    #     'USER':'admin',
+    #     'PASSWORD':'admin',
+    #     'HOST':'mongodb://admin:admin@localhost:27017/imgvis'
+    # }
+
 
 
 # Password validation
@@ -127,4 +137,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'

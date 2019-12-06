@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth,User
 from django.contrib import messages
-from firstapp.models import image_trail
+from firstapp.models import image_trial
 
 # Create your views here.
 def signup(request):
